@@ -1,0 +1,48 @@
+package teamcode;
+
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Hardware;
+
+/** NOT an OpMode
+ *
+ */
+public class hardwarePushbot {
+
+    public DcMotor frontRight = null;
+    public DcMotor frontLeft = null;
+    public DcMotor backRight = null;
+    public DcMotor backLeft = null;
+    public DcMotor carousel = null;
+    public Servo servo0 = null;
+
+
+    public HardwareMap hwMap = null;
+
+    public hardwarePushbot (){
+
+    }
+
+    public void init(HardwareMap ahwMap) {
+
+        hwMap = ahwMap;
+
+        //get names of motors from configuration
+        frontRight = hwMap.get(DcMotor.class, "C_Motor1");
+        frontLeft = hwMap.get(DcMotor.class, "E_Motor0");
+        backLeft = hwMap.get(DcMotor.class, "E_Motor1");
+        backRight = hwMap.get(DcMotor.class, "C_Motor3");
+        carousel = hwMap.get(DcMotor.class, "E_Motor2");
+
+        servo0 = hwMap.get(Servo.class, "C_Servo0");
+
+        frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+    }
+
+}
